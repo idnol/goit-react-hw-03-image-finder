@@ -1,5 +1,7 @@
 import { Formik } from 'formik';
-import { SearchButton, SearchButtonLabel, Field, Form, SearchStyled } from './Search.styled';
+import { SearchButton, Field, Form, SearchStyled } from './Search.styled';
+import { IconContext } from "react-icons";
+import { IoSearch } from 'react-icons/io5';
 
 export const Searchbar = ({submit}) => {
   return <Formik
@@ -13,7 +15,12 @@ export const Searchbar = ({submit}) => {
     <SearchStyled className="searchbar">
       <Form className="form">
         <SearchButton type="submit" className="button">
-          <SearchButtonLabel className="button-label">Search</SearchButtonLabel>
+
+          <span className="button-label">
+            <IconContext.Provider value={{ color: "blue", size: '24' }}>
+              <IoSearch />
+            </IconContext.Provider>
+          </span>
         </SearchButton>
           <Field
             name="query"
