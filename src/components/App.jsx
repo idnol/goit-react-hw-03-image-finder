@@ -5,6 +5,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { LoadButton } from './LoadButton/LoadButton';
 import { ErrorMessage } from 'formik';
 import { Blocks } from 'react-loader-spinner';
+import { AppElement, Inner } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -81,24 +82,29 @@ export class App extends Component {
   render() {
 
     return (
-      <div>
+      <AppElement>
         <Searchbar submit={this.handleSubmit} />
 
-        {this.state.error && <ErrorMessage />}
+        <div className='container'>
 
-        {this.state.loader && <Blocks
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="blocks-loading"
-          wrapperStyle={{}}
-          wrapperClass="blocks-wrapper"
-        />}
+          {this.state.error && <ErrorMessage />}
 
-        <ImageGallery gallery={this.state.images} />
+          {this.state.loader && <Blocks
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+          />}
 
-        {this.state.page < this.state.pages && <LoadButton click={this.handleLoadMore} />}
-      </div>
+          <ImageGallery gallery={this.state.images} />
+
+          {this.state.page < this.state.pages && <Inner><LoadButton click={this.handleLoadMore} /></Inner>}
+
+        </div>
+
+      </AppElement>
     );
   }
 }

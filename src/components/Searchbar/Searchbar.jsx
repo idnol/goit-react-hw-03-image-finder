@@ -1,4 +1,5 @@
-import { Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
+import { SearchButton, SearchButtonLabel, Field, Form, SearchStyled } from './Search.styled';
 
 export const Searchbar = ({submit}) => {
   return <Formik
@@ -9,21 +10,21 @@ export const Searchbar = ({submit}) => {
       actions.resetForm();
       submit(values);
     }}>
-    <header className="searchbar">
+    <SearchStyled className="searchbar">
       <Form className="form">
-        <button type="submit" className="button">
-          <span className="button-label">Search</span>
-        </button>
-
-        <Field
-          name="query"
-          className="input"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
+        <SearchButton type="submit" className="button">
+          <SearchButtonLabel className="button-label">Search</SearchButtonLabel>
+        </SearchButton>
+          <Field
+            name="query"
+            className="input"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
       </Form>
-    </header>
+    </SearchStyled>
   </Formik>
+
 }
